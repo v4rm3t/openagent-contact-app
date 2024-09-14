@@ -1,0 +1,28 @@
+version: '3'
+
+services:
+  frontend:
+    build:
+      context: ./ui   # Path to React app
+      dockerfile: Dockerfile  # React UI Dockerfile location
+    ports:
+      - "80:3000"  # Map host port 80 to container port 3000 (Logs will be displayed on port 3000)
+    depends_on:
+      - backend  # Ensure the backend is up before starting frontend
+    networks:
+      - react-node-network
+
+  backend:
+    build:
+      context: ./api  # Path to Node.js backend
+      dockerfile: Dockerfile  # Node API Dockerfile location
+    ports:
+      - "5000:5000"  # Map host port 5000 to container port 5000
+    environment:
+      - NODE_ENV=production # Doesnt make much difference in this case
+    networks:
+      - react-node-network
+
+networks:
+  react-node-network:
+    driver: bridge

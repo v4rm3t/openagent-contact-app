@@ -1,0 +1,20 @@
+# GLOBAL GITIGNORE (UI folder has its own .gitignore)
+
+# Ignore node_modules
+node_modules/
+
+# Ignore build files
+build/
+
+# Ignore .vscode folder
+.vscode/
+
+# Ignore .env files
+.env
+
+# Ignore .DS_Store files
+.DS_Store
+
+# Ignore log files
+*.log
+npm-debug.log*
